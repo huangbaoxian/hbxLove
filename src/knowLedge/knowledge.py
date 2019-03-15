@@ -159,18 +159,30 @@ def nop():
     pass
 # 检测数据类型
 print(isinstance(1, (int)))
+print('\n\n')
 
 
 
+#递归函数
+def fact(n):
+    if n==1:
+        return 1
+    return n * fact(n - 1)
+print(fact(10))
+print('\n\n')
 
 
 
+print('init', 4)
+print('\n\n')
 
 
-
-
-
-
+# 函数式调用
+r = []
+n = 3
+for i in range(n):
+    r.append(i)
+print(r)
 
 
 
@@ -179,17 +191,38 @@ print(isinstance(1, (int)))
 
 
 print('\n\n')
-l = ['1', '2', '3', '4', '5']
-
+l = ['1', '2', '3', '4', '5','6','7','8','9','10']
 # 切片应用
-
 # 获取数据前三个数据
-
 index = 2
-
 if l >  l:
     print(l[0:index]);
 else:
     print(l[0:2]);
+
+print(l[0:3])
+print(l[1:4])
+print(l[3:4])
+# 每几个取几个 每4个取2个
+print('每4个取2个')
+print(l[:4:2])
+# 没2个取1个
+print('每2个取一个')
+print(l[::4])
+
+# 复制一个列表
+print(l[:])
+# 字符串也支持
+kstr = 'ajksdhjkashdjkashd'
+print(kstr[0:3])
+
+
+
+
+
+
+
+
+
 
 
