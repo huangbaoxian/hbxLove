@@ -9,12 +9,17 @@
 import mysql.connector
 
 # 注意把password设为你的root口令:
-conn = mysql.connector.connect(user='root', password='fladsjf12@110UQ', database='db_test',host='47.104.172.172')
+conn = mysql.connector.connect(user='root', password='fladsjf12@110UQ', database='db_blog',host='47.104.172.172')
 # 运行查询:
 cursor = conn.cursor()
-cursor.execute('select * from users')
+cursor.execute('select * from posts')
 values = cursor.fetchall()
-print(values);
+
+for item in values:
+    print(item)
+    print('\n')
+
+
 # 关闭Cursor和Connection:
 cursor.close()
 conn.close()
