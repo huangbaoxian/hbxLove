@@ -5,6 +5,9 @@ from config.Constant import root
 from config.Constant import dbPassword
 from config.Constant import dbHost
 
+
+
+
 import mysql.connector
 
 
@@ -18,7 +21,7 @@ sql1 = "update db_play.live_paper set cur_model_id = 0, question_count = 0, stat
 sql2 = "DELETE FROM db_play.live_paper_record where period_id = %s"
 sql3 = "UPDATE `zongjie-tiku`.virtual_paper SET start_time = null, end_time = null where id in (SELECT virtual_paper_id FROM `zongjie-tiku`.real_vitual_paper where paper_id = %s)"
 sql4 = "DELETE from `zongjie-tiku`.question_statistic where virtual_paper_id in (SELECT virtual_paper_id FROM `zongjie-tiku`.real_vitual_paper where paper_id = %s)"
-sql5 =  "DELETE from `zongjie-tiku`.trainning where paper_id in (SELECT virtual_paper_id FROM `zongjie-tiku`.real_vitual_paper where paper_id = %s)"
+sql5 = "DELETE from `zongjie-tiku`.trainning where paper_id in (SELECT virtual_paper_id FROM `zongjie-tiku`.real_vitual_paper where paper_id = %s)"
 
 cursor.execute(sql1,periodId);
 cursor.execute(sql2,periodId);
