@@ -8,8 +8,12 @@
 # 导入MySQL驱动:
 import mysql.connector
 
+from config.Constant import root
+from config.Constant import dbPassword
+from config.Constant import dbHost
+
 # 注意把password设为你的root口令:
-conn = mysql.connector.connect(user='root', password='fladsjf12@110UQ', database='db_blog',host='47.104.172.172')
+conn = mysql.connector.connect(user=root, password=dbPassword, database='db_blog',host=dbHost)
 # 运行查询:
 cursor = conn.cursor()
 cursor.execute('select * from posts')
