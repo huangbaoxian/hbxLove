@@ -12,6 +12,27 @@ virtualPaperId = ("121552",)
 
 conn = mysql.connector.connect(user=root, password=dbPassword,host=dbHost)
 # 运行查询:
+idCursor = conn.cursor()
+sqlorigin = "select * from db_play.live_paper_record where  period_id=%s"
+
+idCursor.execute(sqlorigin, periodId)
+values = idCursor.fetchall()
+
+seekDetail = 0
+
+for x in values:
+    seekDetail = x[2]
+idCursor.close()
+print("paperID:")
+print(seekDetail)
+virtualPaperId = (seekDetail,)
+# 运行查询:
+
+
+
+
+conn = mysql.connector.connect(user=root, password=dbPassword,host=dbHost)
+# 运行查询:
 cursor = conn.cursor()
 sql1 = "update db_play.live_paper set cur_model_id = 0, question_count = 0, status = 0 where period_id = %s"
 sql2 = "DELETE FROM db_play.live_paper_record where period_id = %s"
@@ -29,3 +50,5 @@ conn.commit();
 # 关闭Cursor和Connection:
 cursor.close()
 conn.close()
+
+
