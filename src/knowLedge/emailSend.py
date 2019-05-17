@@ -1,28 +1,23 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-from email import encoders
+from smtplib import SMTP
 from email.header import Header
 from email.mime.text import MIMEText
-from email.utils import parseaddr, formataddr
-import smtplib
 
-def _format_addr(s):
-    name, addr = parseaddr(s)
-    return formataddr((Header(name, 'utf-8').encode(), addr))
 
-from_addr = input('From: ')
-password = input('Password: ')
-to_addr = input('To: ')
-smtp_server = input('SMTP server: ')
+def main():
+    # 请自行修改下面的邮件发送者和接收者
+    sender = 'm297907057@126.com'
+    receivers = ['297907057@qq.com']
+    message = MIMEText('777777', 'plain', 'utf-8')
+    message['From'] = 'm297907057@126.com'
+    message['To'] = '297907057@qq.com'
+    message['Subject'] = '88'
+    smtper = SMTP('smtp.126.com')
+    # 请自行修改下面的登录口令
+    smtper.login(sender, 'aiqing123')
+    smtper.sendmail(sender, receivers, message.as_string())
+    smtper.quit()
+    print('邮件发送完成!')
 
-msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
-msg['From'] = _format_addr('Python爱好者 <%s>' % from_addr)
-msg['To'] = _format_addr('管理员 <%s>' % to_addr)
-msg['Subject'] = Header('来自SMTP的问候……', 'utf-8').encode()
 
-server = smtplib.SMTP(smtp_server, 25)
-server.set_debuglevel(1)
-server.login(from_addr, password)
-server.sendmail(from_addr, [to_addr], msg.as_string())
-server.quit()
+if __name__ == '__main__':
+    main()
